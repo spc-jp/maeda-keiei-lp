@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>松本ができるお手伝い × アイ・モバイル｜AI活用で次の柱をつくる</title>
+<title>前田経営研究所の市場戦略｜パートナーとつくる次の柱</title>
 <link rel="icon" type="image/png" href="https://spc-jp.github.io/watashi-mikke/favicon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
@@ -447,9 +447,24 @@
 
   /* ── SUMMARY ── */
   .summary {
-    background: linear-gradient(135deg, #1A7FA8 0%, #0E9DC5 100%);
+    background: linear-gradient(135deg, #0D3D52 0%, #164A63 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
+
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,224,102,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .summary .section-inner { position: relative; z-index: 1; }
 
   .summary-copy {
     font-family: 'Noto Serif JP', serif;
@@ -461,7 +476,7 @@
     margin: 0 auto 12px;
   }
 
-  .summary-copy span { color: #B8E8F5; }
+  .summary-copy span { color: #FFE066; }
 
   .summary-sub {
     font-size: 14px;
@@ -598,9 +613,9 @@
   <div class="hero-indigo-glow"></div>
   <p class="hero-eyebrow">Maeda keiei×i・Mobile</p>
   <h1 class="hero-title">
-    あなたの現場が、<br>
-    AIのエンジンになる。<br>
-    <span>さあ、動かそう。</span>
+    あなたの仲間が、<br>
+    AIで動き出す。<br>
+    <span>さあ、次の柱を立てよう。</span>
   </h1>
   <p class="hero-sub">
     販売拡大の答えは、<br>
@@ -809,12 +824,12 @@
 <section class="summary">
   <div class="section-inner">
     <div class="reveal">
-      <p class="section-label" style="color: var(--gold-light);">In a Word</p>
+      <p class="section-label" style="color: #FFE066;">In a Word</p>
       <p class="summary-copy">
         「AIを使った企画・開発・資料化・営業ツール設計を、<br>
         <span>現場目線で・低コストで・素早く</span>動かせる人間です。」
       </p>
-      <p class="summary-sub" style="color: rgba(255,255,255,0.55); font-size:14px; margin-top:16px; margin-bottom: 48px;">
+      <p class="summary-sub" style="color: rgba(255,255,255,0.72); font-size:14px; margin-top:20px; margin-bottom: 48px; line-height: 1.9;">
         アイ・モバイルが持つ2〜3万社の顧客基盤と、<br>
         私が持つAI開発力・現場感覚を掛け合わせることで、<br>
         新しいビジネスの柱がつくれると考えています。
