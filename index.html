@@ -604,6 +604,282 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ==========================================
+     BATON RELAY (Trust Baton Relay)
+     ========================================== */
+  .baton-heading {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .baton-heading .label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #D0A900;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .baton-heading .title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(19px, 3vw, 24px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .baton-relay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 48px 32px;
+    box-shadow: 0 10px 40px rgba(13,61,82,0.08);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .baton-relay::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(255,224,102,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .baton-node {
+    flex: 0 0 auto;
+    width: 150px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .baton-node-icon {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy) 0%, #0D3D52 100%);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    box-shadow: 0 8px 24px rgba(13,61,82,0.25);
+    animation: batonPulse 3s ease-in-out infinite;
+    position: relative;
+  }
+  .baton-node-icon::after {
+    content: '';
+    position: absolute; inset: -6px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,224,102,0.3);
+    animation: batonPulseRing 3s ease-in-out infinite;
+  }
+  .baton-node[data-role="partner"] .baton-node-icon,
+  .baton-node[data-role="partner"] .baton-node-icon::after { animation-delay: 1s; }
+  .baton-node[data-role="customer"] .baton-node-icon,
+  .baton-node[data-role="customer"] .baton-node-icon::after { animation-delay: 2s; }
+  @keyframes batonPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+  }
+  @keyframes batonPulseRing {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.15); }
+  }
+  .baton-node-icon svg {
+    width: 48px; height: 48px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .baton-node-label {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .baton-node-sub {
+    font-size: 12px;
+    color: var(--text-sub);
+    letter-spacing: 0.5px;
+  }
+
+  .baton-track {
+    flex: 1;
+    height: 6px;
+    background: linear-gradient(90deg,
+      rgba(255,224,102,0.15) 0%,
+      rgba(255,224,102,0.4) 50%,
+      rgba(255,224,102,0.15) 100%);
+    border-radius: 3px;
+    position: relative;
+    min-width: 30px;
+  }
+  .baton-particle {
+    position: absolute;
+    top: 50%; left: 0;
+    width: 14px; height: 14px;
+    margin-top: -7px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFE066 0%, #D0A900 100%);
+    box-shadow:
+      0 0 12px rgba(255,224,102,0.9),
+      0 0 24px rgba(255,224,102,0.5),
+      0 0 36px rgba(255,224,102,0.2);
+    animation: batonFlowRight 3s linear infinite;
+  }
+  @keyframes batonFlowRight {
+    0%   { left: 0%;   opacity: 0; transform: scale(0.4); }
+    15%  {             opacity: 1; transform: scale(1); }
+    85%  {             opacity: 1; transform: scale(1); }
+    100% { left: 100%; opacity: 0; transform: scale(0.4); }
+  }
+
+  /* Quote Drama */
+  .quote-drama {
+    background: var(--white);
+    border-left: 5px solid #D0A900;
+    border-radius: 14px;
+    padding: 44px 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 30px rgba(13,61,82,0.08);
+    position: relative;
+  }
+  .quote-drama::before {
+    content: '"';
+    position: absolute;
+    top: 16px; left: 24px;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 80px;
+    line-height: 1;
+    color: rgba(208,169,0,0.2);
+    font-weight: 700;
+  }
+  .quote-drama p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(16px, 2.6vw, 21px);
+    font-weight: 700;
+    line-height: 2.1;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+  .quote-drama .closed {
+    color: #999;
+    position: relative;
+    display: inline-block;
+  }
+  .quote-drama .closed::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 2px;
+    background: rgba(153,153,153,0.5);
+  }
+  .quote-drama .open {
+    color: #0D3D52;
+    background: linear-gradient(180deg, transparent 65%, rgba(255,224,102,0.55) 65%);
+    padding: 0 6px;
+    font-weight: 700;
+  }
+
+  /* Outcome Cards */
+  .outcome-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .outcome-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 22px 28px;
+    text-align: center;
+    box-shadow: 0 6px 24px rgba(13,61,82,0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .outcome-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #FFE066 0%, #D0A900 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .outcome-card:hover::before { opacity: 1; }
+  .outcome-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(13,61,82,0.14);
+  }
+  .outcome-icon-wrap {
+    width: 60px; height: 60px;
+    margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--off-white) 0%, rgba(255,224,102,0.2) 100%);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .outcome-icon-wrap svg {
+    width: 30px; height: 30px;
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .outcome-title {
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .outcome-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    line-height: 1.9;
+  }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .baton-relay {
+      flex-direction: column;
+      padding: 36px 20px;
+      gap: 10px;
+    }
+    .baton-node { width: 100%; }
+    .baton-node-icon { width: 82px; height: 82px; }
+    .baton-node-icon svg { width: 40px; height: 40px; }
+    .baton-track {
+      width: 6px; height: 54px; min-width: 6px;
+      background: linear-gradient(180deg,
+        rgba(255,224,102,0.15) 0%,
+        rgba(255,224,102,0.4) 50%,
+        rgba(255,224,102,0.15) 100%);
+    }
+    .baton-particle {
+      animation-name: batonFlowDown;
+      left: 50%;
+      margin-left: -7px;
+      margin-top: 0;
+      top: 0;
+    }
+    @keyframes batonFlowDown {
+      0%   { top: 0%;   opacity: 0; transform: scale(0.4); }
+      15%  {            opacity: 1; transform: scale(1); }
+      85%  {            opacity: 1; transform: scale(1); }
+      100% { top: 100%; opacity: 0; transform: scale(0.4); }
+    }
+    .quote-drama { padding: 32px 22px; }
+    .outcome-cards { grid-template-columns: 1fr; gap: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .baton-particle, .baton-node-icon, .baton-node-icon::after {
+      animation: none;
+    }
+  }
 </style>
 </head>
 <body>
@@ -673,35 +949,118 @@
       <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06);">
         <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--navy); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">1</div>
         <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">ターゲットを明確に</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">規模×業種×導入状況で市場を細かく見る。「なぜ売れたのか、なぜ売れなかったのか」。答えは必ず、お客様の心理の中にあります。</div>
+        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">規模×業種×IT習熟度で市場を細かく見る。全員に売るのではなく、「今すぐ響く一群」を先に狙う。集中こそ、最短で勝ち筋をつかむ鍵になります。</div>
       </div>
       <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06);">
         <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--navy); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">2</div>
         <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">商品を統一化する</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">直販も代理店販売も、同じ商品・同じ開発思想に。基本はパッケージ、個別要望はオプションで。「作る」から「選ぶ」へ。誰が売っても品質がブレません。</div>
+        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">直販も代理店販売も、同じ商品・同じ思想で統一。基本はパッケージ、個別要望はオプションで。「作る」から「選ぶ」へ。誰が売っても品質がブレません。</div>
       </div>
       <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06); border: 2px solid var(--gold);">
         <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--gold); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">3</div>
         <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">仲間づくり＝売れる仕組み</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">地域で信頼されている代理店・パートナーこそ最強の販売チャネル。営業→受注→制作→納品→フォローまで回せる体制を用意し、仲間の数だけ売上が積み上がる構造をつくります。</div>
+        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">地域で信頼される代理店・パートナーこそ、最強の販売チャネル。営業から納品・フォローまで回せる体制を整え、仲間の数だけ売上が積み上がる構造へ。</div>
       </div>
     </div>
 
-    <div class="reveal" style="background: var(--white); border-radius: 14px; padding: 32px 24px; text-align: center; box-shadow: 0 6px 24px rgba(13,61,82,0.06); margin-bottom: 40px;">
-      <p style="font-size: 13px; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 18px;">信頼のバトンリレー</p>
-      <p style="font-size: clamp(15px, 3vw, 19px); font-weight: 700; color: var(--text); line-height: 2;">
-        メーカー（IM）<span style="color: var(--gold); margin: 0 8px;">→</span>代理店・パートナー<span style="color: var(--gold); margin: 0 8px;">→</span>お客様
-      </p>
-      <p style="font-size: 13.5px; color: var(--text-sub); margin-top: 12px; line-height: 1.9;">
-        知らない会社の営業には心を閉ざすお客様も、<br>
-        信頼する人のひと言には、耳を傾け、心を開きます。
+    <!-- 信頼のバトンリレー：見せ場（アニメーション付き） -->
+    <div class="reveal baton-heading">
+      <p class="label">信頼のバトンリレー</p>
+      <p class="title">「知らない会社」ではなく、<br>「信頼する人」から届く。</p>
+    </div>
+
+    <div class="reveal baton-relay">
+      <div class="baton-node" data-role="maker">
+        <div class="baton-node-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 20V10l6 3V10l6 3V8l6 3v9H2z"/>
+            <path d="M6 20v-4M10 20v-4M14 20v-4M18 20v-4"/>
+          </svg>
+        </div>
+        <div class="baton-node-label">メーカー</div>
+        <div class="baton-node-sub">i-Mobile</div>
+      </div>
+
+      <div class="baton-track">
+        <div class="baton-particle" style="animation-delay: 0s;"></div>
+        <div class="baton-particle" style="animation-delay: 1s;"></div>
+        <div class="baton-particle" style="animation-delay: 2s;"></div>
+      </div>
+
+      <div class="baton-node" data-role="partner">
+        <div class="baton-node-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 4l-3 3-2-2-4 4 4 4 5-5"/>
+            <path d="M12 20l3-3 2 2 4-4-4-4-5 5"/>
+            <path d="M9 15l3 3M12 12l3 3"/>
+          </svg>
+        </div>
+        <div class="baton-node-label">代理店・パートナー</div>
+        <div class="baton-node-sub">地域の信頼者</div>
+      </div>
+
+      <div class="baton-track">
+        <div class="baton-particle" style="animation-delay: 0.5s;"></div>
+        <div class="baton-particle" style="animation-delay: 1.5s;"></div>
+        <div class="baton-particle" style="animation-delay: 2.5s;"></div>
+      </div>
+
+      <div class="baton-node" data-role="customer">
+        <div class="baton-node-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+            <path d="M17 3.5c-.8 0-1.5.5-1.5 1.3 0 1 1.5 2.2 1.5 2.2s1.5-1.2 1.5-2.2c0-.8-.7-1.3-1.5-1.3z" fill="#FFE066" stroke="#FFE066"/>
+          </svg>
+        </div>
+        <div class="baton-node-label">お客様</div>
+        <div class="baton-node-sub">中小企業</div>
+      </div>
+    </div>
+
+    <div class="reveal quote-drama">
+      <p>
+        <span class="closed">知らない会社の営業には心を閉ざす</span>お客様も、<br>
+        <span class="open">信頼する人のひと言</span>には、<br>
+        耳を傾け、心を開きます。
       </p>
     </div>
 
-    <div class="reveal" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;">
-      <span style="background: var(--navy); color: #fff; padding: 10px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;">ユーザー拡大</span>
-      <span style="background: var(--navy); color: #fff; padding: 10px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;">ストック収益</span>
-      <span style="background: var(--navy); color: #fff; padding: 10px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;">商品統一による効率化</span>
+    <div class="reveal outcome-cards">
+      <div class="outcome-card">
+        <div class="outcome-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="7" r="3"/>
+            <circle cx="17" cy="9" r="2.5"/>
+            <path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1"/>
+            <path d="M15 20v-1a4 4 0 014-4"/>
+          </svg>
+        </div>
+        <div class="outcome-title">ユーザー拡大</div>
+        <div class="outcome-desc">仲間の数だけ、<br>お客様との接点が広がる</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 17l6-6 4 4 8-8"/>
+            <path d="M15 7h6v6"/>
+          </svg>
+        </div>
+        <div class="outcome-title">ストック収益</div>
+        <div class="outcome-desc">保守・運用で、<br>継続収益が生まれる</div>
+      </div>
+
+      <div class="outcome-card">
+        <div class="outcome-icon-wrap">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </div>
+        <div class="outcome-title">商品統一による効率化</div>
+        <div class="outcome-desc">量産と信頼を<br>両立する型ができる</div>
+      </div>
     </div>
   </div>
 </section>
