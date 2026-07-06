@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>前田経営研究所の市場戦略｜パートナーとつくる次の柱</title>
+<title>前田経営研究所｜i-Mobileと立てる、次の柱</title>
 <link rel="icon" type="image/png" href="https://spc-jp.github.io/watashi-mikke/favicon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
@@ -28,6 +28,14 @@
     color: var(--text);
     background: var(--white);
     line-height: 1.8;
+  }
+
+  a:focus-visible,
+  .demo-btn:focus-visible,
+  .hero-badge:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   /* ── HERO ── */
@@ -80,7 +88,6 @@
     font-weight: 500;
     letter-spacing: 0.25em;
     color: var(--gold);
-    text-transform: uppercase;
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.2s forwards;
@@ -88,23 +95,52 @@
 
   .hero-title {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(32px, 6vw, 64px);
+    font-size: clamp(30px, 6vw, 60px);
     font-weight: 900;
     color: #0D3D52;
-    line-height: 1.25;
+    line-height: 1.3;
     margin-bottom: 28px;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.4s forwards;
   }
 
-  .hero-title span {
-    color: var(--gold);
+  .hero-title span { color: var(--gold); }
+
+  /* bilingual hero */
+  .hero-en {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(30px, 6.4vw, 62px);
+    font-weight: 900;
+    color: #0D3D52;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
   }
+  .hero-en span { color: var(--gold); }
+
+  .hero-jp {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(17px, 2.8vw, 26px);
+    font-weight: 700;
+    color: rgba(13,61,82,0.9);
+    line-height: 1.55;
+    margin-bottom: 26px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+  .hero-jp span {
+    background: linear-gradient(180deg, transparent 62%, rgba(255,224,102,0.6) 62%);
+    padding: 0 4px;
+  }
+
+  .hero-en, .hero-jp { position: relative; z-index: 1; }
 
   .hero-sub {
     font-size: clamp(14px, 2vw, 18px);
-    color: rgba(13,61,82,0.75);
-    max-width: 600px;
+    color: rgba(13,61,82,0.78);
+    max-width: 620px;
     margin-bottom: 48px;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.6s forwards;
@@ -115,11 +151,21 @@
     border: 1px solid #1A7FA8;
     color: #1A7FA8;
     font-size: 13px;
+    font-weight: 700;
     letter-spacing: 0.1em;
-    padding: 10px 28px;
+    padding: 12px 32px;
     border-radius: 40px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.4);
+    transition: background 0.2s, transform 0.2s;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.8s forwards;
+  }
+
+  .hero-badge:hover {
+    background: #1A7FA8;
+    color: #fff;
+    transform: translateY(-2px);
   }
 
   .hero-eyebrow,
@@ -128,36 +174,6 @@
   .hero-badge {
     position: relative;
     z-index: 1;
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(13,61,82,0.4);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 1.1s forwards;
-    z-index: 1;
-    white-space: nowrap;
-  }
-
-  .hero-scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--gold), transparent);
-    animation: scrollLine 2s ease-in-out infinite;
-  }
-
-  @keyframes scrollLine {
-    0%, 100% { transform: scaleY(1); opacity: 0.5; }
-    50% { transform: scaleY(1.3); opacity: 1; }
   }
 
   @keyframes fadeUp {
@@ -203,10 +219,7 @@
   }
 
   /* ── PROBLEM ── */
-  .problem {
-    background: var(--off-white);
-    border-left: none;
-  }
+  .problem { background: var(--off-white); }
 
   .problem-quote {
     background: var(--white);
@@ -228,569 +241,260 @@
     line-height: 1.9;
   }
 
-  /* ── VALUE CARDS ── */
-  .value-grid {
+  /* ── SOLUTION (WordPress / Security bridge) ── */
+  .solution { background: var(--white); }
+
+  .solution-compare {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 36px 0 32px;
   }
 
-  @media (max-width: 960px) {
-    .value-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .sol-card {
+    border-radius: 14px;
+    padding: 26px 24px;
+    line-height: 1.85;
   }
 
-  .value-card {
-    background: var(--white);
+  .sol-card.weak {
+    background: var(--off-white);
     border: 1px solid var(--light-gray);
-    border-radius: 16px;
-    padding: 28px 24px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    position: relative;
-    overflow: hidden;
   }
 
-  .value-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(135deg, #B8E8F5 0%, #E8F7FC 100%);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
+  .sol-card.strong {
+    background: linear-gradient(135deg, #1A7FA8 0%, #0E9DC5 100%);
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(13,61,82,0.18);
   }
 
-  .value-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(34,54,112,0.12);
-    border-color: var(--gold);
-  }
-
-  .value-card:hover::before {
-    transform: scaleX(1);
-  }
-
-  .value-icon {
-    font-size: 32px;
-    margin-bottom: 14px;
+  .sol-card .sol-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
     display: block;
   }
 
-  .value-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.15em;
-    margin-bottom: 8px;
-  }
+  .sol-card.weak .sol-tag { color: var(--text-sub); }
+  .sol-card.strong .sol-tag { color: #FFE066; }
 
-  .value-name {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #0D3D52;
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-
-  .value-body {
-    font-size: 13px;
-    color: var(--text-sub);
-    line-height: 1.8;
-  }
-
-  /* ── WORKS ── */
-  .works { background: linear-gradient(135deg, #1A7FA8 0%, #0E9DC5 100%); }
-
-  .works .section-label { color: var(--gold-light); }
-  .works .section-title { color: #FFFFFF; }
-  .works .section-desc { color: rgba(255,255,255,0.65); }
-  .works .divider { background: var(--gold); }
-
-  .works-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .work-item {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(208,169,0,0.25);
-    border-radius: 14px;
-    padding: 24px 20px;
-    transition: background 0.25s ease;
-  }
-
-  .work-item:hover {
-    background: rgba(208,169,0,0.08);
-  }
-
-  .work-tag {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    color: #FFE066;
-    background: rgba(255,224,102,0.2);
-    border-radius: 4px;
-    padding: 3px 10px;
-    margin-bottom: 12px;
-  }
-
-  .work-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.5;
-  }
-
-  .work-desc {
-    font-size: 12px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.8;
-  }
-
-  /* ── PROFILE ── */
-  .profile { background: var(--off-white); }
-
-  .profile-inner {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 56px;
-    align-items: start;
-  }
-
-  .profile-left {
-    text-align: center;
-  }
-
-  .profile-avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--navy), #3a5fa8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 64px;
-    margin: 0 auto 20px;
-    border: 4px solid var(--gold);
-    box-shadow: 0 8px 32px rgba(34,54,112,0.2);
-  }
-
-  .profile-name {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #0D3D52;
-    margin-bottom: 6px;
-  }
-
-  .profile-role {
-    font-size: 12px;
-    color: var(--text-sub);
-    letter-spacing: 0.1em;
-  }
-
-  .profile-career {
-    list-style: none;
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .career-item {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .career-year {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--gold);
-    white-space: nowrap;
-    padding-top: 2px;
-    min-width: 56px;
-  }
-
-  .career-text {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.7;
-    border-left: 2px solid var(--light-gray);
-    padding-left: 16px;
-  }
-
-  .profile-motto {
-    margin-top: 32px;
-    background: #1A7FA8;
-    color: var(--white);
-    border-radius: 14px;
-    padding: 24px 28px;
+  .sol-card h4 {
     font-family: 'Noto Serif JP', serif;
     font-size: 18px;
     font-weight: 700;
-    text-align: center;
-    line-height: 1.6;
+    margin-bottom: 8px;
   }
 
-  .profile-motto span {
-    color: #FFE066;
-  }
+  .sol-card p { font-size: 13.5px; }
+  .sol-card.weak p { color: var(--text-sub); }
+  .sol-card.strong p { color: rgba(255,255,255,0.9); }
 
-  /* ── SUMMARY ── */
-  .summary {
-    background: linear-gradient(135deg, #0D3D52 0%, #164A63 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .summary::before {
-    content: '';
-    position: absolute;
-    top: -80px; left: 50%;
-    transform: translateX(-50%);
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,224,102,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .summary .section-inner { position: relative; z-index: 1; }
-
-  .summary-copy {
+  .solution-bridge {
+    background: var(--off-white);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(18px, 3vw, 28px);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.7;
-    max-width: 720px;
-    margin: 0 auto 12px;
-  }
-
-  .summary-copy span { color: #FFE066; }
-
-  .summary-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 48px;
-    max-width: 560px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* ── CTA ── */
-  .cta {
-    background: linear-gradient(135deg, #B8E8F5 0%, #E8F7FC 100%);
-    text-align: center;
-    padding: 60px 24px;
-  }
-
-  .cta-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(18px, 3vw, 26px);
-    font-weight: 700;
-    color: #0D3D52;
-    margin-bottom: 12px;
-  }
-
-  .cta-sub {
-    font-size: 14px;
-    color: rgba(13,61,82,0.7);
-    margin-bottom: 32px;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    background: #1A7FA8;
-    color: var(--white);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 16px 48px;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 20px rgba(34,54,112,0.3);
-  }
-
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(34,54,112,0.4);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #0D3D52;
-    color: rgba(255,255,255,0.35);
-    text-align: center;
-    padding: 28px 24px;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .profile-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .works-list,
-    .value-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* ── TOP BUTTON ── */
-  .top-btn {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    width: 52px;
-    height: 52px;
-    background: #FFE066;
-    color: #0D3D52;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
-    z-index: 999;
-    text-decoration: none;
-    overflow: hidden;
-  }
-
-  .top-btn.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .top-btn:hover {
-    background: #0D3D52;
-    color: #FFE066;
-  }
-
-  .top-btn svg {
-    animation: bounceUp 1.2s ease-in-out infinite;
-  }
-
-  @keyframes bounceUp {
-    0%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-6px); }
-    60% { transform: translateY(-3px); }
-  }
-
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ==========================================
-     BATON RELAY (Trust Baton Relay)
-     ========================================== */
-  .baton-heading {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .baton-heading .label {
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: #D0A900;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .baton-heading .title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(19px, 3vw, 24px);
+    font-size: clamp(16px, 2.4vw, 20px);
     font-weight: 700;
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
-  .baton-relay {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+  .solution-bridge span { color: var(--gold); }
+
+  /* ── DEMO (main stage) ── */
+  .demo { background: var(--off-white); }
+
+  .demo-stage {
     background: var(--white);
     border-radius: 20px;
-    padding: 48px 32px;
-    box-shadow: 0 10px 40px rgba(13,61,82,0.08);
-    margin-bottom: 40px;
+    padding: 40px;
+    margin-bottom: 28px;
+    box-shadow: 0 12px 44px rgba(13,61,82,0.09);
+    border: 1px solid var(--light-gray);
     position: relative;
     overflow: hidden;
   }
-  .baton-relay::before {
+
+  .demo-stage::before {
     content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at center, rgba(255,224,102,0.06) 0%, transparent 60%);
-    pointer-events: none;
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px; height: 100%;
+    background: linear-gradient(180deg, #FFE066 0%, var(--gold) 100%);
   }
-  .baton-node {
-    flex: 0 0 auto;
-    width: 150px;
+
+  .demo-stage-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+
+  .demo-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .demo-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    background: var(--gold-light);
+    border-radius: 20px;
+    padding: 6px 16px;
+  }
+
+  .demo-catch {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 3.4vw, 30px);
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 26px;
+  }
+
+  .demo-catch span { color: var(--gold); }
+
+  .demo-body-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 34px;
+    align-items: center;
+  }
+
+  .demo-desc {
+    font-size: 14.5px;
+    color: var(--text-sub);
+    line-height: 1.95;
+    margin-bottom: 22px;
+  }
+
+  .demo-steps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .demo-step {
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .demo-step-arrow {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 14.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 14px 34px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(13,61,82,0.25);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+  .demo-btn:hover {
+    transform: translateY(-2px);
+    background: #0D3D52;
+    box-shadow: 0 10px 28px rgba(13,61,82,0.35);
+  }
+
+  .demo-btn svg { width: 17px; height: 17px; }
+
+  /* screen mock (drop screenshot here later) */
+  .demo-screen {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 14px 40px rgba(13,61,82,0.14);
+    overflow: hidden;
+    border: 1px solid var(--light-gray);
+  }
+
+  .demo-screen-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #EBF7FC, #DDF0F8);
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .demo-screen-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #F4A6B0; }
+  .dot-y { background: #FFE066; }
+  .dot-g { background: #9BD4A6; }
+
+  .demo-screen-body {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
     text-align: center;
-    position: relative;
-    z-index: 2;
+    background:
+      repeating-linear-gradient(135deg, rgba(184,232,245,0.18) 0 12px, transparent 12px 24px),
+      var(--off-white);
   }
-  .baton-node-icon {
-    width: 96px; height: 96px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--navy) 0%, #0D3D52 100%);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 14px;
-    box-shadow: 0 8px 24px rgba(13,61,82,0.25);
-    animation: batonPulse 3s ease-in-out infinite;
-    position: relative;
-  }
-  .baton-node-icon::after {
-    content: '';
-    position: absolute; inset: -6px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,224,102,0.3);
-    animation: batonPulseRing 3s ease-in-out infinite;
-  }
-  .baton-node[data-role="partner"] .baton-node-icon,
-  .baton-node[data-role="partner"] .baton-node-icon::after { animation-delay: 1s; }
-  .baton-node[data-role="customer"] .baton-node-icon,
-  .baton-node[data-role="customer"] .baton-node-icon::after { animation-delay: 2s; }
-  @keyframes batonPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.06); }
-  }
-  @keyframes batonPulseRing {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.15); }
-  }
-  .baton-node-icon svg {
-    width: 48px; height: 48px;
+
+  .demo-screen-body svg {
+    width: 42px; height: 42px;
+    stroke: var(--gold);
     fill: none;
-    stroke: #fff;
-    stroke-width: 2;
+    stroke-width: 1.5;
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .baton-node-label {
+
+  .demo-screen-name {
     font-weight: 700;
-    font-size: 15px;
     color: var(--text);
-    margin-bottom: 4px;
+    font-size: 14.5px;
   }
-  .baton-node-sub {
-    font-size: 12px;
+
+  .demo-screen-note {
+    font-size: 11.5px;
     color: var(--text-sub);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03em;
   }
 
-  .baton-track {
-    flex: 1;
-    height: 6px;
-    background: linear-gradient(90deg,
-      rgba(255,224,102,0.15) 0%,
-      rgba(255,224,102,0.4) 50%,
-      rgba(255,224,102,0.15) 100%);
-    border-radius: 3px;
-    position: relative;
-    min-width: 30px;
-  }
-  .baton-particle {
-    position: absolute;
-    top: 50%; left: 0;
-    width: 14px; height: 14px;
-    margin-top: -7px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #FFE066 0%, #D0A900 100%);
-    box-shadow:
-      0 0 12px rgba(255,224,102,0.9),
-      0 0 24px rgba(255,224,102,0.5),
-      0 0 36px rgba(255,224,102,0.2);
-    animation: batonFlowRight 3s linear infinite;
-  }
-  @keyframes batonFlowRight {
-    0%   { left: 0%;   opacity: 0; transform: scale(0.4); }
-    15%  {             opacity: 1; transform: scale(1); }
-    85%  {             opacity: 1; transform: scale(1); }
-    100% { left: 100%; opacity: 0; transform: scale(0.4); }
-  }
+  /* ── OUTCOME ── */
+  .outcome { background: var(--white); }
 
-  /* Quote Drama */
-  .quote-drama {
-    background: var(--white);
-    border-left: 5px solid #D0A900;
-    border-radius: 14px;
-    padding: 44px 40px;
-    text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 30px rgba(13,61,82,0.08);
-    position: relative;
-  }
-  .quote-drama::before {
-    content: '"';
-    position: absolute;
-    top: 16px; left: 24px;
-    font-family: 'Noto Serif JP', serif;
-    font-size: 80px;
-    line-height: 1;
-    color: rgba(208,169,0,0.2);
-    font-weight: 700;
-  }
-  .quote-drama p {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(16px, 2.6vw, 21px);
-    font-weight: 700;
-    line-height: 2.1;
-    color: var(--text);
-    position: relative;
-    z-index: 1;
-  }
-  .quote-drama .closed {
-    color: #999;
-    position: relative;
-    display: inline-block;
-  }
-  .quote-drama .closed::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    top: 50%;
-    height: 2px;
-    background: rgba(153,153,153,0.5);
-  }
-  .quote-drama .open {
-    color: #0D3D52;
-    background: linear-gradient(180deg, transparent 65%, rgba(255,224,102,0.55) 65%);
-    padding: 0 6px;
-    font-weight: 700;
-  }
-
-  /* Outcome Cards */
   .outcome-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-top: 40px;
   }
   .outcome-card {
-    background: var(--white);
+    background: var(--off-white);
     border-radius: 16px;
     padding: 32px 22px 28px;
     text-align: center;
@@ -816,7 +520,7 @@
   .outcome-icon-wrap {
     width: 60px; height: 60px;
     margin: 0 auto 16px;
-    background: linear-gradient(135deg, var(--off-white) 0%, rgba(255,224,102,0.2) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, rgba(255,224,102,0.25) 100%);
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
   }
@@ -841,34 +545,197 @@
     line-height: 1.9;
   }
 
-  /* Mobile */
+  /* ── STRATEGY sub-parts (baton relay / quote drama) ── */
+  .baton-heading { text-align: center; margin-bottom: 32px; }
+  .baton-heading .label {
+    font-size: 13px; letter-spacing: 3px; color: #D0A900;
+    font-weight: 700; margin-bottom: 10px;
+  }
+  .baton-heading .title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(19px, 3vw, 24px);
+    font-weight: 700; color: var(--text); line-height: 1.6;
+  }
+
+  .baton-relay {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; background: var(--white); border-radius: 20px;
+    padding: 48px 32px; box-shadow: 0 10px 40px rgba(13,61,82,0.08);
+    margin-bottom: 40px; position: relative; overflow: hidden;
+  }
+  .baton-relay::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(255,224,102,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .baton-node { flex: 0 0 auto; width: 150px; text-align: center; position: relative; z-index: 2; }
+  .baton-node-icon {
+    width: 96px; height: 96px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy) 0%, #0D3D52 100%);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px; box-shadow: 0 8px 24px rgba(13,61,82,0.25);
+    animation: batonPulse 3s ease-in-out infinite; position: relative;
+  }
+  .baton-node-icon::after {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
+    border: 2px solid rgba(255,224,102,0.3);
+    animation: batonPulseRing 3s ease-in-out infinite;
+  }
+  .baton-node[data-role="partner"] .baton-node-icon,
+  .baton-node[data-role="partner"] .baton-node-icon::after { animation-delay: 1s; }
+  .baton-node[data-role="customer"] .baton-node-icon,
+  .baton-node[data-role="customer"] .baton-node-icon::after { animation-delay: 2s; }
+  @keyframes batonPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes batonPulseRing { 0%,100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.15); } }
+  .baton-node-icon svg {
+    width: 48px; height: 48px; fill: none; stroke: #fff;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .baton-node-label { font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+  .baton-node-sub { font-size: 12px; color: var(--text-sub); letter-spacing: 0.5px; }
+
+  .baton-track {
+    flex: 1; height: 6px;
+    background: linear-gradient(90deg, rgba(255,224,102,0.15) 0%, rgba(255,224,102,0.4) 50%, rgba(255,224,102,0.15) 100%);
+    border-radius: 3px; position: relative; min-width: 30px;
+  }
+  .baton-particle {
+    position: absolute; top: 50%; left: 0; width: 14px; height: 14px;
+    margin-top: -7px; border-radius: 50%;
+    background: radial-gradient(circle, #FFE066 0%, #D0A900 100%);
+    box-shadow: 0 0 12px rgba(255,224,102,0.9), 0 0 24px rgba(255,224,102,0.5), 0 0 36px rgba(255,224,102,0.2);
+    animation: batonFlowRight 3s linear infinite;
+  }
+  @keyframes batonFlowRight {
+    0% { left: 0%; opacity: 0; transform: scale(0.4); }
+    15% { opacity: 1; transform: scale(1); }
+    85% { opacity: 1; transform: scale(1); }
+    100% { left: 100%; opacity: 0; transform: scale(0.4); }
+  }
+
+  .quote-drama {
+    background: var(--white); border-left: 5px solid #D0A900;
+    border-radius: 14px; padding: 44px 40px; text-align: center;
+    margin-bottom: 8px; box-shadow: 0 8px 30px rgba(13,61,82,0.08); position: relative;
+  }
+  .quote-drama::before {
+    content: '"'; position: absolute; top: 16px; left: 24px;
+    font-family: 'Noto Serif JP', serif; font-size: 80px; line-height: 1;
+    color: rgba(208,169,0,0.2); font-weight: 700;
+  }
+  .quote-drama p {
+    font-family: 'Noto Serif JP', serif; font-size: clamp(16px, 2.6vw, 21px);
+    font-weight: 700; line-height: 2.1; color: var(--text); position: relative; z-index: 1;
+  }
+  .quote-drama .closed { color: #999; position: relative; display: inline-block; }
+  .quote-drama .closed::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 50%;
+    height: 2px; background: rgba(153,153,153,0.5);
+  }
+  .quote-drama .open {
+    color: #0D3D52; background: linear-gradient(180deg, transparent 65%, rgba(255,224,102,0.55) 65%);
+    padding: 0 6px; font-weight: 700;
+  }
+
+  /* strategy 3 cards */
+  .strat-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 40px 0 48px;
+  }
+  .strat-card {
+    background: var(--white); border-radius: 14px; padding: 28px 24px;
+    box-shadow: 0 6px 24px rgba(13,61,82,0.06);
+  }
+  .strat-card.accent { border: 2px solid var(--gold); }
+  .strat-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy); color: #fff; font-weight: 700; font-size: 17px; margin-bottom: 14px;
+  }
+  .strat-card.accent .strat-num { background: var(--gold); }
+  .strat-card h4 { font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px; }
+  .strat-card p { font-size: 13.5px; color: var(--text-sub); line-height: 1.9; }
+
+  .strat-lead {
+    background: var(--white); border-left: 5px solid var(--gold); border-radius: 12px;
+    padding: 32px 28px; margin: 40px 0 8px; box-shadow: 0 8px 30px rgba(13,61,82,0.08);
+  }
+  .strat-lead .big {
+    font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700; color: var(--text); line-height: 1.6; margin-bottom: 14px;
+  }
+  .strat-lead .big span { color: var(--gold); }
+  .strat-lead .small { font-size: 14.5px; color: var(--text-sub); line-height: 2; }
+  .strat-lead .small strong { color: var(--text); }
+
+  /* ── SUMMARY ── */
+  .summary {
+    background: linear-gradient(135deg, #0D3D52 0%, #164A63 100%);
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .summary::before {
+    content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,224,102,0.08) 0%, transparent 70%); pointer-events: none;
+  }
+  .summary .section-inner { position: relative; z-index: 1; }
+  .summary-copy {
+    font-family: 'Noto Serif JP', serif; font-size: clamp(19px, 3vw, 30px);
+    font-weight: 700; color: var(--white); line-height: 1.7; max-width: 720px; margin: 0 auto 18px;
+  }
+  .summary-copy span { color: #FFE066; }
+  .summary-sub {
+    font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.9;
+    max-width: 600px; margin: 0 auto;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0D3D52; color: rgba(255,255,255,0.35); text-align: center;
+    padding: 28px 24px; font-size: 12px; letter-spacing: 0.05em;
+  }
+
+  /* ── TOP BUTTON ── */
+  .top-btn {
+    position: fixed; bottom: 32px; right: 32px; width: 52px; height: 52px;
+    background: #FFE066; color: #0D3D52; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18); opacity: 0; transform: translateY(16px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+    z-index: 999; text-decoration: none; overflow: hidden;
+  }
+  .top-btn.visible { opacity: 1; transform: translateY(0); }
+  .top-btn:hover { background: #0D3D52; color: #FFE066; }
+  .top-btn svg { animation: bounceUp 1.2s ease-in-out infinite; }
+  @keyframes bounceUp { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-6px); } 60% { transform: translateY(-3px); } }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .demo-body-grid { grid-template-columns: 1fr; gap: 26px; }
+    .demo-stage { padding: 30px 24px; }
+    .solution-compare { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 720px) {
-    .baton-relay {
-      flex-direction: column;
-      padding: 36px 20px;
-      gap: 10px;
-    }
+    .baton-relay { flex-direction: column; padding: 36px 20px; gap: 10px; }
     .baton-node { width: 100%; }
     .baton-node-icon { width: 82px; height: 82px; }
     .baton-node-icon svg { width: 40px; height: 40px; }
     .baton-track {
       width: 6px; height: 54px; min-width: 6px;
-      background: linear-gradient(180deg,
-        rgba(255,224,102,0.15) 0%,
-        rgba(255,224,102,0.4) 50%,
-        rgba(255,224,102,0.15) 100%);
+      background: linear-gradient(180deg, rgba(255,224,102,0.15) 0%, rgba(255,224,102,0.4) 50%, rgba(255,224,102,0.15) 100%);
     }
-    .baton-particle {
-      animation-name: batonFlowDown;
-      left: 50%;
-      margin-left: -7px;
-      margin-top: 0;
-      top: 0;
-    }
+    .baton-particle { animation-name: batonFlowDown; left: 50%; margin-left: -7px; margin-top: 0; top: 0; }
     @keyframes batonFlowDown {
-      0%   { top: 0%;   opacity: 0; transform: scale(0.4); }
-      15%  {            opacity: 1; transform: scale(1); }
-      85%  {            opacity: 1; transform: scale(1); }
+      0% { top: 0%; opacity: 0; transform: scale(0.4); }
+      15% { opacity: 1; transform: scale(1); }
+      85% { opacity: 1; transform: scale(1); }
       100% { top: 100%; opacity: 0; transform: scale(0.4); }
     }
     .quote-drama { padding: 32px 22px; }
@@ -876,51 +743,54 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .baton-particle, .baton-node-icon, .baton-node-icon::after {
+    .baton-particle, .baton-node-icon, .baton-node-icon::after,
+    .top-btn svg, .hero-eyebrow, .hero-title, .hero-sub, .hero-badge {
       animation: none;
     }
+    .reveal { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-indigo-glow"></div>
-  <p class="hero-eyebrow">Maeda keiei×i・Mobile</p>
-  <h1 class="hero-title">
-    あなたの仲間が、<br>
-    AIで動き出す。<br>
-    <span>さあ、次の柱を立てよう。</span>
+  <p class="hero-eyebrow">前田経営研究所 × i-Mobile</p>
+  <h1 class="hero-en">
+    Don't chase buyers.<br>
+    <span>Build sellers.</span>
   </h1>
-  <p class="hero-sub">
-    販売拡大の答えは、仲間の中にある。
+  <p class="hero-jp">
+    売り先を探すな。<span>売ってくれる仲間を増やせ。</span>
   </p>
-  <a href="#works" class="hero-badge" style="text-decoration:none; cursor:pointer;">課題が、アプリになる。↓</a>
+  <p class="hero-sub">
+    3万社の基盤 × AI が、次の成長エンジンになる。<br>
+    Turn 30,000 accounts into your next growth engine.
+  </p>
+  <a href="#demo" class="hero-badge">動くデモを見る ｜ See it live ↓</a>
 </section>
 
-<!-- PROBLEM -->
+<!-- ============ BACKGROUND（現状の課題・社長視点）============ -->
 <section class="problem">
   <div class="section-inner reveal">
     <p class="section-label">Background</p>
-    <h2 class="section-title">「次の柱」が見えにくい時代に、<br>外に答えがあるとしたら？</h2>
+    <h2 class="section-title">更新頼みのままで、<br>次の柱は立つのか。</h2>
     <div class="divider"></div>
     <div class="problem-quote">
-      ハードを売る時代は終わりつつある。でも、次に何を売ればいいのか・・・<br>
-      その答えを持てている販売店は、まだ少ない。<br><br>
-      そんな課題を持つ販売店に対して、<br>
-      「AIを使った付加価値」を一緒に届けられる人間が、<br>
-      社外にいたとしたら？
+      ハードを売る時代は、静かに終わりつつある。<br>
+      台数は伸びず、売上の多くは既存の更新。<br>
+      新規が取れないまま、利益だけが薄くなっていく——。
     </div>
     <p class="problem-sub">
-      私はその答えをすでに「動くもの」として持っています。<br>
-      企画だけでなく、デモ・ツール・提案書まで、すぐに見せられる状態です。
+      いま必要なのは、値引きでも根性でもなく「売り方そのもの」の作り替えです。<br>
+      その答えを、AIとパートナーで“動くもの”として用意しました。企画ではなく、今日この場で触れる状態です。
     </p>
   </div>
 </section>
 
-<!-- STRATEGY -->
-<section style="background: var(--off-white); padding: 88px 24px; position: relative; overflow: hidden;">
+<!-- ============ STRATEGY（戦略）============ -->
+<section style="background: var(--off-white); position: relative; overflow: hidden;">
   <div style="position:absolute; top:-100px; right:-100px; width:420px; height:420px; border-radius:50%; background: radial-gradient(circle, rgba(14,157,197,0.12) 0%, transparent 70%); pointer-events:none;"></div>
   <div class="section-inner" style="position:relative; z-index:1;">
     <div class="reveal">
@@ -933,36 +803,33 @@
       </p>
     </div>
 
-    <div class="reveal" style="background: var(--white); border-left: 5px solid var(--gold); border-radius: 12px; padding: 32px 28px; margin: 40px 0 48px; box-shadow: 0 8px 30px rgba(13,61,82,0.08);">
-      <p style="font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 4vw, 28px); font-weight: 700; color: var(--text); line-height: 1.6; margin-bottom: 14px;">
-        売り先を探すな。<br>売ってくれる<span style="color: var(--gold);">仲間</span>を増やせ。
-      </p>
-      <p style="font-size: 14.5px; color: var(--text-sub); line-height: 2;">
+    <div class="reveal strat-lead">
+      <p class="big">売り先を探すな。<br>売ってくれる<span>仲間</span>を増やせ。</p>
+      <p class="small">
         この市場のお客様は、機能や性能を比較して選んでいるわけではありません。<br>
         Webがなくても不便を感じていない。それでも発注する理由はただひとつ。<br>
-        <strong style="color: var(--text);">「信用・信頼できる人からの紹介」だから、心を開くのです。</strong>
+        <strong>「信用・信頼できる人からの紹介」だから、心を開くのです。</strong>
       </p>
     </div>
 
-    <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 48px;">
-      <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06);">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--navy); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">1</div>
-        <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">ターゲットを明確に</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">規模×業種×IT習熟度で市場を細かく見る。全員に売るのではなく、「今すぐ響く一群」を先に狙う。集中こそ、最短で勝ち筋をつかむ鍵になります。</div>
+    <div class="reveal strat-cards">
+      <div class="strat-card">
+        <div class="strat-num">1</div>
+        <h4>ターゲットを明確に</h4>
+        <p>規模×業種×IT習熟度で市場を細かく見る。全員に売るのではなく、「今すぐ響く一群」を先に狙う。集中こそ、最短で勝ち筋をつかむ鍵です。</p>
       </div>
-      <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06);">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--navy); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">2</div>
-        <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">商品を統一化する</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">直販も代理店販売も、同じ商品・同じ思想で統一。基本はパッケージ、個別要望はオプションで。「作る」から「選ぶ」へ。誰が売っても品質がブレません。</div>
+      <div class="strat-card">
+        <div class="strat-num">2</div>
+        <h4>商品を統一化する</h4>
+        <p>直販も代理店販売も、同じ商品・同じ思想で統一。基本はパッケージ、個別要望はオプションで。「作る」から「選ぶ」へ。誰が売っても品質がブレません。</p>
       </div>
-      <div style="background: var(--white); border-radius: 14px; padding: 28px 24px; box-shadow: 0 6px 24px rgba(13,61,82,0.06); border: 2px solid var(--gold);">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background: var(--gold); color:#fff; font-weight:700; font-size:17px; margin-bottom:14px;">3</div>
-        <div style="font-weight: 700; font-size: 16.5px; color: var(--text); margin-bottom: 10px;">仲間づくり＝売れる仕組み</div>
-        <div style="font-size: 13.5px; color: var(--text-sub); line-height: 1.9;">地域で信頼される代理店・パートナーこそ、最強の販売チャネル。営業から納品・フォローまで回せる体制を整え、仲間の数だけ売上が積み上がる構造へ。</div>
+      <div class="strat-card accent">
+        <div class="strat-num">3</div>
+        <h4>仲間づくり＝売れる仕組み</h4>
+        <p>地域で信頼される代理店・パートナーこそ、最強の販売チャネル。営業から納品・フォローまで回せる体制を整え、仲間の数だけ売上が積み上がる構造へ。</p>
       </div>
     </div>
 
-    <!-- 信頼のバトンリレー：見せ場（アニメーション付き） -->
     <div class="reveal baton-heading">
       <p class="label">信頼のバトンリレー</p>
       <p class="title">「知らない会社」ではなく、<br>「信頼する人」から届く。</p>
@@ -971,46 +838,31 @@
     <div class="reveal baton-relay">
       <div class="baton-node" data-role="maker">
         <div class="baton-node-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M2 20V10l6 3V10l6 3V8l6 3v9H2z"/>
-            <path d="M6 20v-4M10 20v-4M14 20v-4M18 20v-4"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M2 20V10l6 3V10l6 3V8l6 3v9H2z"/><path d="M6 20v-4M10 20v-4M14 20v-4M18 20v-4"/></svg>
         </div>
         <div class="baton-node-label">メーカー</div>
         <div class="baton-node-sub">i-Mobile</div>
       </div>
-
       <div class="baton-track">
         <div class="baton-particle" style="animation-delay: 0s;"></div>
         <div class="baton-particle" style="animation-delay: 1s;"></div>
         <div class="baton-particle" style="animation-delay: 2s;"></div>
       </div>
-
       <div class="baton-node" data-role="partner">
         <div class="baton-node-icon">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 4l-3 3-2-2-4 4 4 4 5-5"/>
-            <path d="M12 20l3-3 2 2 4-4-4-4-5 5"/>
-            <path d="M9 15l3 3M12 12l3 3"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M12 4l-3 3-2-2-4 4 4 4 5-5"/><path d="M12 20l3-3 2 2 4-4-4-4-5 5"/><path d="M9 15l3 3M12 12l3 3"/></svg>
         </div>
         <div class="baton-node-label">代理店・パートナー</div>
         <div class="baton-node-sub">地域の信頼者</div>
       </div>
-
       <div class="baton-track">
         <div class="baton-particle" style="animation-delay: 0.5s;"></div>
         <div class="baton-particle" style="animation-delay: 1.5s;"></div>
         <div class="baton-particle" style="animation-delay: 2.5s;"></div>
       </div>
-
       <div class="baton-node" data-role="customer">
         <div class="baton-node-icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="3"/>
-            <path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
-            <path d="M17 3.5c-.8 0-1.5.5-1.5 1.3 0 1 1.5 2.2 1.5 2.2s1.5-1.2 1.5-2.2c0-.8-.7-1.3-1.5-1.3z" fill="#FFE066" stroke="#FFE066"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><path d="M17 3.5c-.8 0-1.5.5-1.5 1.3 0 1 1.5 2.2 1.5 2.2s1.5-1.2 1.5-2.2c0-.8-.7-1.3-1.5-1.3z" fill="#FFE066" stroke="#FFE066"/></svg>
         </div>
         <div class="baton-node-label">お客様</div>
         <div class="baton-node-sub">中小企業</div>
@@ -1024,38 +876,192 @@
         耳を傾け、心を開きます。
       </p>
     </div>
+  </div>
+</section>
 
+<!-- ============ SOLUTION（解決の入口・WordPress/セキュリティ軸）============ -->
+<section class="solution">
+  <div class="section-inner reveal">
+    <p class="section-label">Solution</p>
+    <h2 class="section-title">WordPressのままで、<br>本当に大丈夫ですか。</h2>
+    <div class="divider"></div>
+    <p class="section-desc">
+      数万社が使うWordPressは、便利な反面、セキュリティの穴になりがちです。<br>
+      i-Mobileの基盤なら、その弱点を「強み」に変えられます。
+    </p>
+
+    <div class="solution-compare">
+      <div class="sol-card weak">
+        <span class="sol-tag">WordPress（個別サーバー）</span>
+        <h4>一社ごとに、守り続ける負担</h4>
+        <p>更新・保守・脆弱性対応を、お客様ごとに個別で。手が回らず、穴ができやすい。</p>
+      </div>
+      <div class="sol-card strong">
+        <span class="sol-tag">i-Mobile 基盤（共通サーバー）</span>
+        <h4>数万社を、まとめて守る</h4>
+        <p>1つの仕組みで数万社を一括防御・一括更新。だから、堅い。だから、安心。</p>
+      </div>
+    </div>
+
+    <div class="solution-bridge reveal">
+      だから、既存客のWordPressを、<span>AIでまるごと“次の商品”へ。</span><br>
+      その入口が、次の3つの実演です。
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO（動くデモ3つ・主役）============ -->
+<section class="demo" id="demo">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center; margin-bottom:48px;">
+      <p class="section-label" style="letter-spacing:0.3em;">Live Demo</p>
+      <h2 class="section-title" style="margin:0 auto;">触って伝わる、3つの実演。</h2>
+      <div class="divider" style="margin:20px auto 24px;"></div>
+      <p class="section-desc" style="margin:0 auto;">
+        構想ではなく、その場で動くプロダクトです。<br>
+        「入口 → 本命 → 体感」の順で、代理店がそのまま提案できる形にしています。
+      </p>
+    </div>
+
+    <!-- DEMO 01 -->
+    <div class="demo-stage reveal">
+      <div class="demo-stage-head">
+        <span class="demo-num">01</span>
+        <span class="demo-tag">入口 ｜ セキュリティ診断</span>
+      </div>
+      <p class="demo-catch">そのホームページ、<span>狙われていませんか。</span></p>
+      <div class="demo-body-grid">
+        <div>
+          <p class="demo-desc">
+            URLを入れるだけで、WordPressの弱点とリスクをその場で見える化。<br>
+            「危ないですよ」の一言が、商談の入口になります。売り込みではなく、心配から入れる一本です。
+          </p>
+          <div class="demo-steps">
+            <span class="demo-step">URLを入力</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">自動で診断</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">リスクを表示</span>
+          </div>
+          <!-- ▼リンク差し替え可：実際のセキュリティ診断デモのURLに変更してください -->
+          <a href="https://smartpage-sales-app.pages.dev/" target="_blank" rel="noopener" class="demo-btn">
+            診断デモを開く
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+        <div class="demo-screen">
+          <div class="demo-screen-bar"><span class="demo-screen-dot dot-r"></span><span class="demo-screen-dot dot-y"></span><span class="demo-screen-dot dot-g"></span></div>
+          <div class="demo-screen-body">
+            <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+            <div class="demo-screen-name">セキュリティ／WP分析</div>
+            <div class="demo-screen-note">＊ここに実際のデモ画面を差し込み</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMO 02 -->
+    <div class="demo-stage reveal">
+      <div class="demo-stage-head">
+        <span class="demo-num">02</span>
+        <span class="demo-tag">本命 ｜ サイト自動作成</span>
+      </div>
+      <p class="demo-catch">業種を入れて、少し席を外すと、<span>サイトができている。</span></p>
+      <div class="demo-body-grid">
+        <div>
+          <p class="demo-desc">
+            会社の情報を入れるだけで、構成・文章・キャッチコピーまでAIが一気通貫で作成。<br>
+            架空の1社を使って「入力から完成まで」を最後まで流し切る、いちばんの見せ場です。
+          </p>
+          <div class="demo-steps">
+            <span class="demo-step">情報を入力</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">AIが生成</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">キャッチまで完成</span>
+          </div>
+          <!-- ▼リンク差し替え可：一気通貫のサイト作成デモのURLに変更してください -->
+          <a href="https://web-i-director.pages.dev/" target="_blank" rel="noopener" class="demo-btn">
+            作成デモを開く
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+        <div class="demo-screen">
+          <div class="demo-screen-bar"><span class="demo-screen-dot dot-r"></span><span class="demo-screen-dot dot-y"></span><span class="demo-screen-dot dot-g"></span></div>
+          <div class="demo-screen-body">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/><path d="M11 13l2 2 3-4"/></svg>
+            <div class="demo-screen-name">ランディングページ一気通貫</div>
+            <div class="demo-screen-note">＊ここに実際のデモ画面を差し込み</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEMO 03 -->
+    <div class="demo-stage reveal">
+      <div class="demo-stage-head">
+        <span class="demo-num">03</span>
+        <span class="demo-tag">体感 ｜ チラシ → Web変換</span>
+      </div>
+      <p class="demo-catch">紙のチラシを撮るだけで、<span>Webに変わる。</span></p>
+      <div class="demo-body-grid">
+        <div>
+          <p class="demo-desc">
+            既存のチラシを撮影すると、AIが読み取ってWebコンテンツに変換。<br>
+            コピー機・プリンター販売店が、いつものお客様にそのまま出せる「次の売り物」になります。
+          </p>
+          <div class="demo-steps">
+            <span class="demo-step">チラシを撮影</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">AIが読み取り</span>
+            <span class="demo-step-arrow">→</span>
+            <span class="demo-step">Webに変換</span>
+          </div>
+          <a href="https://chirashi-mikke.pages.dev/" target="_blank" rel="noopener" class="demo-btn">
+            変換デモを開く
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+        <div class="demo-screen">
+          <div class="demo-screen-bar"><span class="demo-screen-dot dot-r"></span><span class="demo-screen-dot dot-y"></span><span class="demo-screen-dot dot-g"></span></div>
+          <div class="demo-screen-body">
+            <svg viewBox="0 0 24 24"><rect x="4" y="3" width="12" height="16" rx="1"/><path d="M7 7h6M7 10h6M7 13h4"/><path d="M15 14l5 5M20 14l-5 5"/></svg>
+            <div class="demo-screen-name">チラシミッケ</div>
+            <div class="demo-screen-note">＊ここに実際のデモ画面を差し込み</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ OUTCOME（広がり）============ -->
+<section class="outcome">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label" style="letter-spacing:0.3em;">Outcome</p>
+      <h2 class="section-title" style="margin:0 auto;">この3つが、こう効いてくる。</h2>
+      <div class="divider" style="margin:20px auto 0;"></div>
+    </div>
     <div class="reveal outcome-cards">
       <div class="outcome-card">
         <div class="outcome-icon-wrap">
-          <svg viewBox="0 0 24 24">
-            <circle cx="9" cy="7" r="3"/>
-            <circle cx="17" cy="9" r="2.5"/>
-            <path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1"/>
-            <path d="M15 20v-1a4 4 0 014-4"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20v-1a5 5 0 015-5h2a5 5 0 015 5v1"/><path d="M15 20v-1a4 4 0 014-4"/></svg>
         </div>
         <div class="outcome-title">ユーザー拡大</div>
         <div class="outcome-desc">仲間の数だけ、<br>お客様との接点が広がる</div>
       </div>
-
       <div class="outcome-card">
         <div class="outcome-icon-wrap">
-          <svg viewBox="0 0 24 24">
-            <path d="M3 17l6-6 4 4 8-8"/>
-            <path d="M15 7h6v6"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
         </div>
         <div class="outcome-title">ストック収益</div>
         <div class="outcome-desc">保守・運用で、<br>継続収益が生まれる</div>
       </div>
-
       <div class="outcome-card">
         <div class="outcome-icon-wrap">
-          <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
         </div>
         <div class="outcome-title">商品統一による効率化</div>
         <div class="outcome-desc">量産と信頼を<br>両立する型ができる</div>
@@ -1064,143 +1070,28 @@
   </div>
 </section>
 
-<!-- VALUE -->
-<section style="background: var(--white); padding: 80px 24px; position: relative; overflow: hidden;">
-  <div style="position:absolute; inset:0; z-index:0; pointer-events:none; background-image: radial-gradient(circle at center, #FFF991 0%, transparent 70%); opacity:0.6; mix-blend-mode:multiply;"></div>
-  <div class="section-inner" style="position:relative; z-index:1;">
-    <div class="reveal">
-      <p class="section-label">8 Values</p>
-      <h2 class="section-title">この戦略を動かす、8つの武器</h2>
-      <div class="divider"></div>
-      <p class="section-desc">
-        仲間づくりの戦略を実行するための「武器」です。<br>
-        どれも「企画案」ではありません。すでに動いているか、すぐに動かせるものです。
-      </p>
-    </div>
-    <div class="value-grid">
-      <div class="value-card reveal">
-        <span class="value-icon">🤖</span>
-        <div class="value-num">VALUE 01</div>
-        <div class="value-name">AI活用の即戦力</div>
-        <div class="value-body">Claude・Gemini・ChatGPTを有料で使いこなし、APIアプリ開発まで対応。社内にないスキルをそのまま使えます。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">🏠</span>
-        <div class="value-num">VALUE 02</div>
-        <div class="value-name">ホームページ制作の<br>AI自動化</div>
-        <div class="value-body">URL or 基本情報を入れるだけで、サイトマップ・ライティング・強みの言語化まで自動生成。営業マンが触れる「売れる商品」として設計済み。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">⚡</span>
-        <div class="value-num">VALUE 03</div>
-        <div class="value-name">デモ開発の圧倒的<br>スピード</div>
-        <div class="value-body">「なんちゃって版→本ちゃん版」の段階設計で、画面で触れるデモを短期間で作成。会議の場で即見せられます。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">📦</span>
-        <div class="value-num">VALUE 04</div>
-        <div class="value-name">代理店向けパッケージ企画</div>
-        <div class="value-body">採用支援・取引先提案書・補助金申請の3軸パッケージ。代理店ネットワーク全体への横展開を想定したシミュレーション済み。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">🏛️</span>
-        <div class="value-num">VALUE 05</div>
-        <div class="value-name">バーチャル役員会議<br>アプリ</div>
-        <div class="value-body">社長1人にAI参謀5人（商品戦略・財務・税理士・弁護士・司会）が会議。テーマ入力だけで議事録を自動生成します。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">🌐</span>
-        <div class="value-num">VALUE 06</div>
-        <div class="value-name">業界のリアルな<br>外部目線</div>
-        <div class="value-body">Web制作業界フェアに毎年参加。「AIでホームページが作れる時代」への変化と競合動向を現場感覚で伝えられます。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">📄</span>
-        <div class="value-num">VALUE 07</div>
-        <div class="value-name">提案書・資料化の速さ</div>
-        <div class="value-body">会議翌日には整理済み資料を送付。LP・営業トーク・アプリ企画案まで、社内でそのまま使える形でアウトプットできます。</div>
-      </div>
-      <div class="value-card reveal">
-        <span class="value-icon">🚀</span>
-        <div class="value-num">VALUE 08</div>
-        <div class="value-name">走りながら育てる開発スタイル</div>
-        <div class="value-body">GitHub＋Cloudflare無料構成で初期費用ゼロで公開。「APIなし→有料API版」の段階設計でリスクなく試せます。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WORKS -->
-<section class="works" id="works">
-  <div class="section-inner">
-    <div class="reveal">
-      <p class="section-label">Works</p>
-      <h2 class="section-title">すでに動いている実績</h2>
-      <div class="divider"></div>
-      <p class="section-desc">
-        構想ではなく、実際に稼働中・または即デモ可能なプロダクトです。<br>
-        ヒヤリングから作成してアプリ案の一部です。
-      </p>
-    </div>
-    <div class="works-list">
-      <div class="work-item reveal">
-        <span class="work-tag">Web自動構築</span>
-        <div class="work-title"><a href="https://web-i-director.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">Web i Director ↗</a></div>
-        <div class="work-desc">チャットで会話するだけで、事業の強みや課題を反映した本格的なWebサイトを全自動で構築し、見たまま編集できるアプリ。</div>
-      </div>
-      <div class="work-item reveal">
-        <span class="work-tag">HP自動生成</span>
-        <div class="work-title"><a href="https://smartpage-i-tool.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">smartpage-i-too ↗</a></div>
-        <div class="work-desc">企業情報を入れるだけでホームページ骨格を自動生成。WordPress置き換え提案ツールとして稼働中。</div>
-      </div>
-      <div class="work-item reveal">
-        <span class="work-tag">WordPress移行</span>
-        <div class="work-title"><a href="https://smartpage-sales-app.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">WP切替戦略 ↗</a></div>
-        <div class="work-desc">WordPressからスマートページへの移行を提案する営業支援ツール。代理店営業マンがそのまま使える設計。</div>
-      </div>
-      <div class="work-item reveal">
-        <span class="work-tag">コピー器販売店向け</span>
-        <div class="work-title"><a href="https://chirashi-mikke.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">チラシみっけ ↗</a></div>
-        <div class="work-desc">チラシ画像をアップするだけでWebコンテンツに自動変換。プリンター販売店の新しい提案商材として開発済み。</div>
-      </div>
-      <div class="work-item reveal">
-        <span class="work-tag">経営支援</span>
-        <div class="work-title"><a href="https://mikke-keieikadai-shindan.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">みっけ経営課題診断 ↗</a></div>
-        <div class="work-desc">経営者の課題をAIが診断し、優先度の高い解決策を提示。中小企業の意思決定を支援するコンサルツール。</div>
-      </div>
-      <div class="work-item reveal">
-        <span class="work-tag">AI人材育成</span>
-        <div class="work-title"><a href="https://ai-skills-shindan.pages.dev/" target="_blank" style="color:#fff; text-decoration:none;">AIスキル診断アンケート ↗</a></div>
-        <div class="work-desc">AIツールの利用状況やスキルを可視化し、部署ごとの課題発見から研修設計、推進リーダー選定までを支援する診断アプリ。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- SUMMARY -->
+<!-- ============ SUMMARY（前田経営研究所として）============ -->
 <section class="summary">
   <div class="section-inner">
     <div class="reveal">
       <p class="section-label" style="color: #FFE066;">In a Word</p>
       <p class="summary-copy">
-        「AIを使った企画・開発・資料化・営業ツール設計を、<br>
-        <span>現場目線で・低コストで・素早く</span>動かせる人間です。」
+        数万社の基盤 × AI。<br>
+        <span>次の柱は、外の力と組んでつくる。</span>
       </p>
-      <p class="summary-sub" style="color: rgba(255,255,255,0.72); font-size:14px; margin-top:20px; margin-bottom: 48px; line-height: 1.9;">
-        アイ・モバイルが持つ2〜3万社の顧客基盤と、<br>
-        私が持つAI開発力・現場感覚を掛け合わせることで、<br>
-        新しいビジネスの柱がつくれると考えています。
+      <p class="summary-sub">
+        i-Mobileが持つ数万社の顧客基盤に、AIの開発力と現場感覚を掛け合わせる。<br>
+        前田経営研究所は、その“次の柱づくり”を、動くものと一緒に伴走します。
       </p>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; 2025 Maeda keiei. All rights reserved.
+  &copy; 2026 前田経営研究所（Maeda Management Institute）. All rights reserved.
 </footer>
 
-<a href="#" class="top-btn" id="topBtn" title="トップへ戻る">
+<a href="#" class="top-btn" id="topBtn" title="トップへ戻る" aria-label="トップへ戻る">
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"/>
   </svg>
@@ -1212,24 +1103,18 @@
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
+        setTimeout(() => { entry.target.classList.add('visible'); }, i * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-
   reveals.forEach(el => observer.observe(el));
 
   // Top button
   const topBtn = document.getElementById('topBtn');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      topBtn.classList.add('visible');
-    } else {
-      topBtn.classList.remove('visible');
-    }
+    if (window.scrollY > 400) { topBtn.classList.add('visible'); }
+    else { topBtn.classList.remove('visible'); }
   });
 </script>
 </body>
