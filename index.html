@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>前田経営研究所｜i-Mobileと立てる、次の柱</title>
-<link rel="icon" type="image/png" href="https://spc-jp.github.io/watashi-mikke/favicon.png">
+<link rel="icon" type="image/png" href="https://spc-jp.github.io/maeda-keiei-lp/favicon.png">
+<link rel="shortcut icon" type="image/png" href="https://spc-jp.github.io/maeda-keiei-lp/favicon.png">
+<link rel="apple-touch-icon" href="https://spc-jp.github.io/maeda-keiei-lp/favicon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
@@ -106,44 +108,89 @@
 
   .hero-title span { color: var(--gold); }
 
-  /* bilingual hero */
+  /* bilingual hero (orchestrated entrance) */
   .hero-en {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(30px, 6.4vw, 62px);
+    font-size: clamp(32px, 7.2vw, 72px);
     font-weight: 900;
     color: #0D3D52;
-    line-height: 1.18;
+    line-height: 1.16;
     letter-spacing: -0.01em;
-    margin-bottom: 22px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease 0.4s forwards;
+    margin-bottom: 20px;
   }
-  .hero-en span { color: var(--gold); }
+  .hero-en .line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+  }
+  .hero-en .w {
+    display: inline-block;
+    transform: translateY(115%);
+    animation: wordUp 0.7s cubic-bezier(0.22, 0.61, 0.25, 1) forwards;
+    animation-delay: calc(0.45s + var(--i) * 0.12s);
+  }
+  .hero-en .gold { color: var(--gold); }
+
+  @keyframes wordUp {
+    to { transform: translateY(0); }
+  }
+
+  /* gold rule that sweeps in after the English lands */
+  .hero-rule {
+    display: block;
+    width: 90px;
+    height: 3px;
+    margin: 0 auto 26px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold) 0%, #FFE066 100%);
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: ruleIn 0.6s cubic-bezier(0.22, 0.61, 0.25, 1) 1.45s forwards;
+  }
+  @keyframes ruleIn {
+    to { transform: scaleX(1); }
+  }
+
+  /* second act: JP + sub + button rise together */
+  .hero-reveal { position: relative; z-index: 1; }
 
   .hero-jp {
     font-family: 'Noto Serif JP', serif;
-    font-size: clamp(17px, 2.8vw, 26px);
+    font-size: clamp(18px, 3.2vw, 30px);
     font-weight: 700;
     color: rgba(13,61,82,0.9);
     line-height: 1.55;
     margin-bottom: 26px;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.55s forwards;
+    transform: translateY(26px);
+    animation: revealUp 0.75s cubic-bezier(0.22, 0.61, 0.25, 1) 1.95s forwards;
   }
-  .hero-jp span {
-    background: linear-gradient(180deg, transparent 62%, rgba(255,224,102,0.6) 62%);
+  .hero-jp .mark {
+    background-image: linear-gradient(180deg, transparent 62%, rgba(255,224,102,0.75) 62%);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
     padding: 0 4px;
+    animation: markWipe 0.6s ease 2.5s forwards;
+  }
+  @keyframes markWipe {
+    to { background-size: 100% 100%; }
   }
 
   .hero-en, .hero-jp { position: relative; z-index: 1; }
 
   .hero-sub {
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(14px, 2.3vw, 21px);
     color: rgba(13,61,82,0.78);
     max-width: 620px;
-    margin-bottom: 48px;
+    margin: 0 auto 48px;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.6s forwards;
+    transform: translateY(22px);
+    animation: revealUp 0.75s cubic-bezier(0.22, 0.61, 0.25, 1) 2.15s forwards;
+  }
+
+  @keyframes revealUp {
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .hero-badge {
@@ -159,7 +206,12 @@
     background: rgba(255,255,255,0.4);
     transition: background 0.2s, transform 0.2s;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.8s forwards;
+    transform: scale(0.92);
+    animation: badgePop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 2.35s forwards;
+  }
+
+  @keyframes badgePop {
+    to { opacity: 1; transform: scale(1); }
   }
 
   .hero-badge:hover {
@@ -723,6 +775,7 @@
   }
 
   @media (max-width: 720px) {
+    .hero-en .line { overflow: visible; }
     .baton-relay { flex-direction: column; padding: 36px 20px; gap: 10px; }
     .baton-node { width: 100%; }
     .baton-node-icon { width: 82px; height: 82px; }
@@ -747,11 +800,14 @@
     .top-btn svg {
       animation: none;
     }
-    .hero-eyebrow, .hero-en, .hero-jp, .hero-sub, .hero-badge {
+    .hero-eyebrow, .hero-en .w, .hero-rule, .hero-jp, .hero-jp .mark,
+    .hero-sub, .hero-badge {
       animation: none;
       opacity: 1;
       transform: none;
     }
+    .hero-rule { transform: scaleX(1); }
+    .hero-jp .mark { background-size: 100% 100%; }
     .reveal { opacity: 1; transform: none; }
   }
 </style>
@@ -762,17 +818,33 @@
 <section class="hero">
   <div class="hero-indigo-glow"></div>
   <p class="hero-eyebrow">前田経営研究所 × i-Mobile</p>
+
+  <!-- 英語：各単語を1つずつ立ち上げます。文言を変えるときは <span class="w"> で囲ってください（囲まなくても表示はされます）。--i の数字は登場する順番です。 -->
   <h1 class="hero-en">
-    Don't chase buyers.<br>
-    <span>Build sellers.</span>
+    <span class="line">
+      <span class="w" style="--i:0">Don't</span>
+      <span class="w" style="--i:1">chase</span>
+      <span class="w" style="--i:2">buyers.</span>
+    </span>
+    <span class="line">
+      <span class="w gold" style="--i:3">Build</span>
+      <span class="w gold" style="--i:4">sellers.</span>
+    </span>
   </h1>
-  <p class="hero-jp">
-    売り先を探すな。<span>売ってくれる仲間を増やせ。</span>
-  </p>
-  <p class="hero-sub">
-    3万社の基盤 × AI が、次の成長エンジンになる。
-  </p>
-  <a href="#demo" class="hero-badge">動くデモを見る ｜ See it live ↓</a>
+
+  <!-- 英語が出そろった後にスッと引かれる金のライン -->
+  <span class="hero-rule"></span>
+
+  <!-- 二段目：日本語・サブ・ボタンがふわっと登場 -->
+  <div class="hero-reveal">
+    <p class="hero-jp">
+      売り先を探すな。<span class="mark">売ってくれる仲間を増やせ。</span>
+    </p>
+    <p class="hero-sub">
+      3万社の基盤 × AI が、次の成長エンジンになる。
+    </p>
+    <a href="#demo" class="hero-badge">動くデモを見る ｜ See it live ↓</a>
+  </div>
 </section>
 
 <!-- ============ BACKGROUND（現状の課題・社長視点）============ -->
