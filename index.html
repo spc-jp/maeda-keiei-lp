@@ -796,18 +796,11 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    /* ずっと動き続ける演出だけ配慮して止める（ヒーローの登場演出は残す） */
     .baton-particle, .baton-node-icon, .baton-node-icon::after,
     .top-btn svg {
       animation: none;
     }
-    .hero-eyebrow, .hero-en .w, .hero-rule, .hero-jp, .hero-jp .mark,
-    .hero-sub, .hero-badge {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-    .hero-rule { transform: scaleX(1); }
-    .hero-jp .mark { background-size: 100% 100%; }
     .reveal { opacity: 1; transform: none; }
   }
 </style>
