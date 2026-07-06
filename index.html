@@ -744,8 +744,13 @@
 
   @media (prefers-reduced-motion: reduce) {
     .baton-particle, .baton-node-icon, .baton-node-icon::after,
-    .top-btn svg, .hero-eyebrow, .hero-title, .hero-sub, .hero-badge {
+    .top-btn svg {
       animation: none;
+    }
+    .hero-eyebrow, .hero-en, .hero-jp, .hero-sub, .hero-badge {
+      animation: none;
+      opacity: 1;
+      transform: none;
     }
     .reveal { opacity: 1; transform: none; }
   }
@@ -765,8 +770,7 @@
     売り先を探すな。<span>売ってくれる仲間を増やせ。</span>
   </p>
   <p class="hero-sub">
-    3万社の基盤 × AI が、次の成長エンジンになる。<br>
-    Turn 30,000 accounts into your next growth engine.
+    3万社の基盤 × AI が、次の成長エンジンになる。
   </p>
   <a href="#demo" class="hero-badge">動くデモを見る ｜ See it live ↓</a>
 </section>
@@ -780,7 +784,7 @@
     <div class="problem-quote">
       ハードを売る時代は、静かに終わりつつある。<br>
       台数は伸びず、売上の多くは既存の更新。<br>
-      新規が取れないまま、利益だけが薄くなっていく——。
+      新規が取れないまま、利益だけが薄くなっていく。
     </div>
     <p class="problem-sub">
       いま必要なのは、値引きでも根性でもなく「売り方そのもの」の作り替えです。<br>
@@ -1115,6 +1119,10 @@
   window.addEventListener('scroll', () => {
     if (window.scrollY > 400) { topBtn.classList.add('visible'); }
     else { topBtn.classList.remove('visible'); }
+  });
+  topBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 </body>
