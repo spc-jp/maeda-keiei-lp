@@ -549,6 +549,76 @@
     display: block;
   }
 
+  /* クリックで拡大できる合図（ホバー時） */
+  .demo-screen-body.filled { cursor: zoom-in; position: relative; }
+  .demo-screen-body.filled::after {
+    content: '＋ クリックで拡大';
+    position: absolute;
+    bottom: 12px; right: 12px;
+    background: rgba(13,61,82,0.82);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 6px 12px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+  .demo-screen-body.filled:hover::after { opacity: 1; }
+  .demo-screen-body.filled img { transition: transform 0.4s ease; }
+  .demo-screen-body.filled:hover img { transform: scale(1.03); }
+
+  /* ── LIGHTBOX（拡大ポップアップ）── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgba(13,61,82,0.86);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .lightbox.open { opacity: 1; visibility: visible; }
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 12px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+    transform: scale(0.94);
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.25, 1);
+  }
+  .lightbox.open img { transform: scale(1); }
+  .lightbox-close {
+    position: absolute;
+    top: 24px; right: 28px;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.28); transform: rotate(90deg); }
+
+  @media (max-width: 720px) {
+    .demo-screen-body.filled::after { content: '＋ タップで拡大'; }
+    .lightbox { padding: 16px; }
+    .lightbox-close { top: 14px; right: 16px; }
+  }
+
   /* ── OUTCOME ── */
   .outcome { background: var(--white); }
 
@@ -1173,6 +1243,12 @@
   </svg>
 </a>
 
+<!-- 拡大ポップアップ（ライトボックス） -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
@@ -1195,6 +1271,38 @@
   topBtn.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Lightbox（拡大ポップアップ）
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // デモ画面をクリックで拡大
+  document.querySelectorAll('.demo-screen-body.filled img').forEach((img) => {
+    img.parentElement.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  // 背景クリック・×・Escで閉じる
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
   });
 </script>
 </body>
